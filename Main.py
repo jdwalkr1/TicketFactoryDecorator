@@ -1,29 +1,27 @@
-from factory import TicketFactory, BaseTicketFactory, LuxuryTicketFactory, ChildTicketFactory
-from ticket import Ticket, BaseTicket, LuxuryTicket, ChildsTicket
+# main.py
+from factory import BaseTicketFactory, LuxuryTicketFactory, ChildTicketFactory
+from decorator import SnackDecorator
 
-def read_tickets(string) -> Ticket:
-   factories = {
-       "Adult": BaseTicketFactory(),
-       "Luxury": LuxuryTicketFactory(),
-       "Child": ChildTicketFactory(),
-   }
-   
-   while True:
-       #ticket_choice = input("Enter your ticket (Adult, Luxury, Child): ")
-       if string in factories:
-           fact = factories[string]
-           ticket = fact.get_Ticket()
-           ticket.printCost()
-           break
-       else:
-           print("Incorrect Entry. Please Try Again.")
-           return None
-           
+def read_tickets(ticket_type):
+    factories = {
+        "Adult": BaseTicketFactory(),
+        "Luxury": LuxuryTicketFactory(),
+        "Child": ChildTicketFactory(),
+    }
+
+    if ticket_type in factories:
+        factory = factories[ticket_type]
+        ticket = SnackDecorator(factory.get_Ticket())
+        ticket.printCost()  
+        return ticket
+    else:
+        print("Incorrect Entry. Please Try Again.")
+        return None
 
 def main():
-    fac = read_tickets("Adult")
-    if fac:
+    ticket = read_tickets("Luxury") 
+    if ticket:
         print("Ticket successfully created.")
-   
+
 if __name__ == '__main__':
     main()
