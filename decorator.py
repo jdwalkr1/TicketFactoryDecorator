@@ -27,7 +27,7 @@ class SnackDecorator(TicketDecorator):
         return self.ticket.cost + 5
     
     def printCost(self):
-        print(f"The cost of your ticket with a snack is {self.cost} euros.")
+        print(f"The cost of your ticket from {self.departure} to {self.arrival} with a snack is {self.cost} euros.")
 
 class MealDecorator(TicketDecorator):
     @property
@@ -35,13 +35,16 @@ class MealDecorator(TicketDecorator):
         return self.ticket.cost + 10
     
     def printCost(self):
-        print(f"The cost of your ticket with a snack is {self.cost} euros.")
+        print(f"The cost of your ticket from {self.departure} to {self.arrival} with a meal is {self.cost} euros.")
         
-class RigaTicket(TicketDecorator):
+class RigaTallinnTicket(TicketDecorator):
+    
+    def __init__(self, ticket):
+        super().__init__(ticket)
+        
+        
     @property
     def cost(self):
         return self.ticket.cost +2
     
-    #change decorator flexibility 
-    #def printCost(self):
-    #   print(f"The cost of your ticket to Riga is {self.cost} euros.")
+    

@@ -19,6 +19,5 @@ class ChildTicketFactory(TicketFactory):
     def get_Ticket(self) -> ChildsTicket:
         return ChildsTicket()
     
-
-
+''' Need to make decisions about implementation concerning gui'''
     
