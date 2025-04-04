@@ -1,8 +1,8 @@
 # main.py
-from factory import BaseTicketFactory, LuxuryTicketFactory, ChildTicketFactory
-from decorator import SnackDecorator
+'''All of this needs to be refactored'''
 
-def read_tickets(ticket_type):
+'''Must be refactored - Ticket factory now only produces base ticket, Luxury and Child's ticket now are decorators '''
+'''def read_tickets(ticket_type):
     factories = {
         "Adult": BaseTicketFactory(),
         "Luxury": LuxuryTicketFactory(),
@@ -25,3 +25,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+'''

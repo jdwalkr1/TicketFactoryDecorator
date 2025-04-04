@@ -21,7 +21,7 @@ class Ticket(ABC):
 class BaseTicket(Ticket):
     def __init__(self, departure, arrival):
         super().__init__(21, departure, arrival)
-           
+'''          
 class LuxuryTicket(Ticket):
     def __init__(self, departure, arrival):
         super().__init__(28, departure, arrival)
@@ -29,7 +29,7 @@ class LuxuryTicket(Ticket):
 class ChildsTicket(Ticket):
     def __init__(self, departure, arrival):
         super().__init__(14, departure, arrival)
-        
+   '''     
   
     
     
