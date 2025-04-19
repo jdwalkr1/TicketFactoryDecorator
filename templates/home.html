@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head><title>Buy Ticket</title></head>
+<body>
+    <h1>Ticket Purchase</h1>
+    <form method="post">
+        <label>Departure:</label>
+        <select name="departure">
+            <option>Riga</option>
+            <option>Tallinn</option>
+            <option>Tartu</option>
+            <option>Daugavpils</option>
+            <option>Vilnius</option>
+        </select>
+        
+        <label>Arrival:</label>
+        <select name="arrival">
+            <option>Riga</option>
+            <option>Tallinn</option>
+            <option>Tartu</option>
+            <option>Daugavpils</option>
+            <option>Vilnius</option>
+        </select>
+
+        <h3>Extras:</h3>
+        <input type="checkbox" name="extras" value="snack"> Snack (+5€)<br>
+        <input type="checkbox" name="extras" value="meal"> Meal (+10€)<br>
+        <input type="checkbox" name="extras" value="luxury"> Luxury Seat (+7€)<br>
+        <input type="checkbox" name="extras" value="child"> Child Discount (-7€)<br>
+
+        <br>
+        <button type="submit">Calculate Ticket</button>
+    </form>
+</body>
+</html>
