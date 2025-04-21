@@ -36,13 +36,21 @@ ROUTE_DECORATORS = {
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+    available_times = ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
+                       "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00",
+                       "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
     if request.method == "POST":
         departure = request.form["departure"]
         arrival = request.form["arrival"]
+        selected_time = request.form["departure_time"]
         extras = request.form.getlist("extras")  # List of selected extras
         
+        today = datetime.today()
+        hours, minutes = map(int, selected_time.split(":"))
+        departure_datetime = datetime(today.year, today.month, today.day, hours, minutes)
+        
         # Create basic ticket
-        ticket = BaseTicket(departure, arrival, departure_datetime=datetime.now())
+        ticket = BaseTicket(departure, arrival, departure_datetime)
 
         
         # Apply route decorator
@@ -63,7 +71,7 @@ def home():
         final_cost = ticket.cost
         return render_template("results.html", ticket=ticket, final_cost=final_cost)
     
-    return render_template("home.html")
+    return render_template("home.html", available_times=available_times)
 
 if __name__ == "__main__":
     app.run(debug=True)

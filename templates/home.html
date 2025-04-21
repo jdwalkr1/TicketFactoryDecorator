@@ -22,14 +22,24 @@
             <option>Vilnius</option>
         </select>
 
-        <h3>Extras:</h3>
-        <input type="checkbox" name="extras" value="snack"> Snack (+5€)<br>
-        <input type="checkbox" name="extras" value="meal"> Meal (+10€)<br>
-        <input type="checkbox" name="extras" value="luxury"> Luxury Seat (+7€)<br>
-        <input type="checkbox" name="extras" value="child"> Child Discount (-7€)<br>
-
-        <br>
-        <button type="submit">Calculate Ticket</button>
-    </form>
+        <form method="POST">
+        
+            <label for="departure_time">Select Departure Time:</label>
+            <select name="departure_time" required>
+                {% for time in available_times %}
+                    <option value="{{ time }}">{{ time }}</option>
+                {% endfor %}
+            </select>
+        
+            <!-- Extras checkboxes -->
+            <div>
+                <label><input type="checkbox" name="extras" value="snack"> Snack</label>
+                <label><input type="checkbox" name="extras" value="meal"> Meal</label>
+                <label><input type="checkbox" name="extras" value="luxury"> Luxury</label>
+                <label><input type="checkbox" name="extras" value="child"> Child</label>
+            </div>
+        
+            <button type="submit">Buy Ticket</button>
+        </form>
 </body>
 </html>
