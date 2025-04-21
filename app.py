@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from ticket import Ticket
+from ticket import BaseTicket
 from decorator import (SnackDecorator, MealDecorator, LuxuryDecorator, ChildDecorator,
                          RigaTallinnDecorator, TartuTallinnDecorator, DaugavpilsTallinnDecorator,
                          VilniusTallinnDecorator, DaugavpilsTartuDecorator, RigaTartuDecorator,
@@ -42,7 +42,8 @@ def home():
         extras = request.form.getlist("extras")  # List of selected extras
         
         # Create basic ticket
-        ticket = Ticket(departure, arrival, cost=0, departure_datetime=datetime.now())
+        ticket = BaseTicket(departure, arrival, departure_datetime=datetime.now())
+
         
         # Apply route decorator
         route_key = (departure, arrival)
@@ -60,7 +61,7 @@ def home():
             ticket = ChildDecorator(ticket)
         
         final_cost = ticket.cost
-        return render_template("result.html", ticket=ticket, final_cost=final_cost)
+        return render_template("results.html", ticket=ticket, final_cost=final_cost)
     
     return render_template("home.html")
 
