@@ -1,0 +1,9 @@
+body {
+    border: 5px solid red;
+}
+
+#grad {
+    background-image: linear-gradient(to bottom right, #FFF8DC,rgb(194, 161, 161) );
+    min-height: 100vh;
+    padding: 20px;
+}

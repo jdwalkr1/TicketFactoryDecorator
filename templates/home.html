@@ -1,29 +1,32 @@
 <!doctype html>
 <html>
-<head><title>Buy Ticket</title></head>
+<head>
+    <title>Buy Ticket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+</head>
 <body>
-    <h1>Ticket Purchase</h1>
-    <form method="post">
-        <label>Departure:</label>
-        <select name="departure">
-            <option>Riga</option>
-            <option>Tallinn</option>
-            <option>Tartu</option>
-            <option>Daugavpils</option>
-            <option>Vilnius</option>
-        </select>
-        
-        <label>Arrival:</label>
-        <select name="arrival">
-            <option>Riga</option>
-            <option>Tallinn</option>
-            <option>Tartu</option>
-            <option>Daugavpils</option>
-            <option>Vilnius</option>
-        </select>
-
+    <div id="grad">
+        <h1>Ticket Purchase</h1>
         <form method="POST">
-        
+            <label>Departure:</label>
+            <select name="departure">
+                <option>Riga</option>
+                <option>Tallinn</option>
+                <option>Tartu</option>
+                <option>Daugavpils</option>
+                <option>Vilnius</option>
+            </select>
+            
+            <label>Arrival:</label>
+            <select name="arrival">
+                <option>Riga</option>
+                <option>Tallinn</option>
+                <option>Tartu</option>
+                <option>Daugavpils</option>
+                <option>Vilnius</option>
+            </select>
+
             <label for="departure_time">Select Departure Time:</label>
             <select name="departure_time" required>
                 {% for time in available_times %}
@@ -41,5 +44,6 @@
         
             <button type="submit">Buy Ticket</button>
         </form>
+    </div>
 </body>
 </html>
